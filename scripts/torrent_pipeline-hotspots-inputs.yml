@@ -1,0 +1,15 @@
+input_ubam:
+  class: File
+  path: s3://rook-ceph-rgw-my-store.rook-ceph/workflow-inputs/iontorrent-ring-trial-solid/IonXpress_008.bam
+reference:
+  class: File
+  path: s3://rook-ceph-rgw-my-store.rook-ceph/references/iontorrent-hg19/hg19.fasta
+bed_file:
+  class: File
+  path: s3://rook-ceph-rgw-my-store.rook-ceph/workflow-inputs/iontorrent-targets/ColonLungV2.20140523.designed.bed
+hotspots_bed:
+  class: File
+  path: s3://rook-ceph-rgw-my-store.rook-ceph/workflow-inputs/iontorrent-targets/ColonLungV2.20150730.hotspot.bed
+parameters:
+  class: File
+  path: s3://rook-ceph-rgw-my-store.rook-ceph/workflow-inputs/iontorrent-param-sets/AmpliSeq-Colon-and-Lung-Cancer-v2-single-sample.json

@@ -1,0 +1,22 @@
+analyses/
+
+tvc-out/
+
+bed/
+hotspots/
+tools/
+datasets/
+tvc_out/
+ref_genome/
+
+# !*bed/bed_desc.md
+
+# !/hotspots/hotspots_desc.md
+
+# !/tools/tools_desc.md
+
+# !/datasets/datasets_desc.md
+
+# !/tvc-out/tvc-out_desc.md
+
+# !/ref_genome/ref_genome_desc.md
