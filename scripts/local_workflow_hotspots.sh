@@ -11,7 +11,6 @@ exitWithError () {
   exit
 }
 
-OUTDIR="/data/tvc-out/$ANALYSIS_NAME/$PREFIX"
 
 if [[ ! -f "$INPUT_BAM" ]]; then
 	exitWithError "Input BAM file $INPUT_BAM not found. Please check analysis name and/or bam file name."
@@ -21,15 +20,15 @@ if [[ ! -f "$HOTSPOTS_BED" ]]; then
 	exitWithError "Input Hotspots BED file $HOTSPOTS_BED not found."
 fi
 
-if [ -d "$OUTDIR" ]; then
-    exitWithError "Directory $OUTDIR exists. Sample $PREFIX has already been analyzed under analysis $ANALYSIS_NAME. Please remove $PREFIX subdirectory or choose a different analysis name or BAM sample for this analysis."
+if [ -d "$MOUNT_OUTDIR" ]; then
+    exitWithError "Directory $MOUNT_OUTDIR exists. Sample $PREFIX has already been analyzed under analysis $ANALYSIS_NAME. Please remove $PREFIX subdirectory or choose a different analysis name or BAM sample for this analysis."
 fi
 
 
-mkdir -p "$OUTDIR"
+mkdir -p "$MOUNT_OUTDIR"
 
-ALIGNED_BAM="$OUTDIR/${PREFIX}_aligned.bam"
-SORTED_BAM="$OUTDIR/${PREFIX}_aligned_sorted.bam"
+ALIGNED_BAM="$MOUNT_OUTDIR/${PREFIX}_aligned.bam"
+SORTED_BAM="$MOUNT_OUTDIR/${PREFIX}_aligned_sorted.bam"
 
 # The folowing commands (and especially their parameters) have been extracted
 # from logs of runs in the Torrent Suite and documentation foujnd in the Thermo
@@ -38,8 +37,8 @@ SORTED_BAM="$OUTDIR/${PREFIX}_aligned_sorted.bam"
 # designs.
 
 BED_FNAME=$(basename "$TARGETS_BED" | sed 's/\.[^.]*$//')
-PTRIM_BED="$OUTDIR/${BED_FNAME}_unmerged_detail.bed"
-PLAIN_BED="$OUTDIR/${BED_FNAME}_merged_plain.bed"
+PTRIM_BED="$MOUNT_OUTDIR/${BED_FNAME}_unmerged_detail.bed"
+PLAIN_BED="$MOUNT_OUTDIR/${BED_FNAME}_merged_plain.bed"
 
 echo Preraring merged target BED file 
 tvcutils validate_bed \
@@ -50,8 +49,8 @@ tvcutils validate_bed \
 
 
 HOTSPOTS_FNAME=$(basename "$HOTSPOTS_BED" | sed 's/\.[^.]*$//')
-HOTSPOTS_LEFT_BED="$OUTDIR/${HOTSPOTS_FNAME}_left_aligned.bed"
-HOTSPOTS_VCF="$OUTDIR/${HOTSPOTS_FNAME}.vcf"
+HOTSPOTS_LEFT_BED="$MOUNT_OUTDIR/${HOTSPOTS_FNAME}_left_aligned.bed"
+HOTSPOTS_VCF="$MOUNT_OUTDIR/${HOTSPOTS_FNAME}.vcf"
 
 echo Preparing Hotspots VCF
 tvcutils prepare_hotspots \
@@ -76,7 +75,7 @@ echo Indexing sorted BAM...
 samtools index -b "$SORTED_BAM" || exit $?
 
 echo Running variant caller...
-variant_caller_pipeline.py -o "$OUTDIR" \
+variant_caller_pipeline.py -o "$MOUNT_OUTDIR" \
     --num-threads $THREADS \
     --region-bed "$PLAIN_BED" \
     --primer-trim-bed "$PTRIM_BED" \
@@ -84,4 +83,4 @@ variant_caller_pipeline.py -o "$OUTDIR" \
     --input-bam "$SORTED_BAM" --parameters-file "$PARAMS_FILE" \
     --reference-fasta "$HGREF" || exit $?
 
-chown -R 1004:1004 "$OUTDIR"
+chown -R 1004:1004 "$MOUNT_OUTDIR"

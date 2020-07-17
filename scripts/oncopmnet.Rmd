@@ -1,0 +1,36 @@
+#
+<p class="title2">
+  Variant - Drug association clinical report<br />
+  Date: `r format(Sys.Date(), "%d %B %Y")`
+</p>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = FALSE, comment = NA)
+  source("variantAnnotation.R")
+  # source(paste0(INSTALL_DIR,"/bin/tableMakeover.R"))
+```
+
+<p class="subheader">
+  Analysis ID: `r analysisId`<br />
+  Sample Name:  `r sample_name`<br />
+  Sample ID: `r sampleId`<br />
+  Total Variants: `r totalVariants`<br />
+</p>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+<h1>
+<i class="fas fa-list-ul" style='font-size:28px'>
+</i>
+Clinically Actionable Variants list
+</h1>
+
+
+<p class="comment">
+**actionableVariants** variant annotations of the `r totalVariants` variants called in the analysis were deemed clinically actionable and are reported below.
+</p>
+```{r actionable_variants, echo=FALSE}
+kable(SNV[,c(1:4,6)]) %>%
+  kable_styling(full_width = TRUE) %>%
+  row_spec(0, bold = T, font_size = "10", align = "left", background = "#ffffff !important", color = "#248f8f !important")
+```

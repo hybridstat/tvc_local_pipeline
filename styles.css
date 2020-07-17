@@ -1,0 +1,99 @@
+@media print {
+  *,
+  *:before,
+  *:after {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 2px !important;
+  }
+}
+
+@page {
+  margin: 2% !important;
+  @bottom-center{
+        content: "Page " counter(page) " of " counter(pages);
+    }
+}
+
+html {
+  font-size: 58px;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: 1px;
+  line-height: 1px;
+  padding: .25rem;
+}
+
+.title {
+  padding: 5px !important;
+  border-radius: 2px !important;
+  font-size: 35px !important;
+  color: #336699 !important;
+  text-align: left !important;
+}
+
+.title2 {
+  padding: 5px !important;
+  border-radius: 2px !important;
+  font-size: 20px !important;
+  color: #336699 !important;
+  text-align: left !important;
+  margin-right: 200px !important;
+}
+
+.subheader{
+  border-style: solid !important;
+  font-family: Verdana, Geneva, sans-serif !important;
+  background-color: #c2d6b6 !important;
+  padding: 5px !important;
+  border-radius: 7px;
+  font-size: 12px;
+ }  
+
+.comment {
+  font-family: Verdana, Geneva, sans-serif !important;
+  background-color: #c2d6b6 !important;
+  padding: 5px !important;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
+.footer {
+  font-size: 9px !important;
+  font-style: italic !important;
+}
+
+table {
+font-size: 9px;
+}
+
+td{
+    word-wrap:break-word
+}
+
+h1 {
+  font-family: Arimo, Helvetica, sans-serif !important;
+  border-radius: 10px !important;
+  background: #248f8f !important;
+  padding: 5px !important;
+  text-align: left !important;
+  color: #ffffff !important;
+  font-size: 24px !important;
+}
+h2,
+h3 {
+  border-bottom: 2px solid #fafafa !important;
+  margin-bottom: 1.15rem !important;
+  padding-bottom: .5rem !important;
+  text-align: center !important;
+  color: #2609E2 !important;
+}
+h4,
+h5,
+h6 {
+  font-family: Arimo, Helvetica, sans-serif !important;
+  color: #2609E2 !important
+}
