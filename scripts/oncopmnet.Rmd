@@ -1,7 +1,7 @@
-#
+
 <p class="title2">
-  Variant - Drug association clinical report<br />
-  Date: `r format(Sys.Date(), "%d %B %Y")`
+  Έκθεση αποτελεσμάτων<br />
+  Καθορισμός γενωμικών αλλαγών σε συμπαγείς όγκους
 </p>
 
 ```{r setup, include=FALSE}
@@ -10,27 +10,107 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE, comment = NA)
   # source(paste0(INSTALL_DIR,"/bin/tableMakeover.R"))
 ```
 
+<p class="title3">
+  Στοιχεία Δείγματος
+</p>
+
 <p class="subheader">
-  Analysis ID: `r analysisId`<br />
-  Sample Name:  `r sample_name`<br />
-  Sample ID: `r sampleId`<br />
-  Total Variants: `r totalVariants`<br />
+  Κωδικός Ασθενούς:<br />
+  Ηλικία:<br />
+  Φύλο:<br />
+  Τύπος Δείγματος:<br />
+  Κατάσταση δείγματος: νωπό/μονιμοποιημένο<br />
+  Ποσοστό διήθησης από καρκινικά κύτταρα:<br />
+  Υπεύθυνος Παθολογοανατόμος:<br />
+  Ημερομηνία δειγματοληψίας:<br />
+  Ημερομηνία παραλαβής δείγματος:<br />
+  Μέθοδος Ανάλυσης: Στοχευμένη Αλληλούχηση Νέας Γενιάς (targeted-NGS):<br />
+  Ημερομηνία Αποτελέσματος:<br />
+</p>
+
+<p class="title3">
+  Στοιχεία Παραπέμποντος Ιατρού
+</p>
+
+<p class="subheader">
+  Ονοματεπώνυμο:<br />
+  Διεύθυνση/Νοσοκομείου:<br />
+  Τηλ:<br />
+  Φαξ:<br />
+  e-mail:<br />
+</p>
+
+<p class="subheader">
+  Τύπος κακοήθειας (ICD-10):
 </p>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 
 <h1>
-<i class="fas fa-list-ul" style='font-size:28px'>
-</i>
-Clinically Actionable Variants list
+Αποτελέσματα
 </h1>
 
-
 <p class="comment">
-**actionableVariants** variant annotations of the `r totalVariants` variants called in the analysis were deemed clinically actionable and are reported below.
+Ανιχνεύθηκαν οι παρακάτω παθογόνες παραλλαγές:
 </p>
 ```{r actionable_variants, echo=FALSE}
-kable(SNV[,c(1:4,6)]) %>%
+kable(SNV[,c(1:5)]) %>%
   kable_styling(full_width = TRUE) %>%
   row_spec(0, bold = T, font_size = "10", align = "left", background = "#ffffff !important", color = "#248f8f !important")
 ```
+<p class="footer">
+  \*ονοματολογία γονίδιων και παραλλαγών σύμφωνα με το HGVS(http://varnomen.hgvs.org/ (http://varnomen.hgvs.org/)) <br />
+  \*Τα δεδομένα αντλήθηκαν με το πακέτο VariantAnnotation, Bioconductor(https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html)
+</p>
+
+<h1>
+Ερμηνεία Αποτελεσμάτων
+</h1>
+placeholder
+
+<h1>
+Μεθοδολογία
+</h1>
+
+<p class="subheader2">
+  **Εξαγωγή DNA**: DNA was extracted from paraffin section using the MagMAX™ FFPE DNA/RNA Ultra kit from
+Applied Biosystems™ (Thermo Fisher Scientific) according to manufacturer’s instructions. DNA
+concentration was assessed on NanoDrop™ 1000 and Qubit® 2.0 Fluorometer (Thermo Fisher
+Scientific). <br />
+  **Κατασκευή βιβλιοθήκης**: Library was generated from 30ng DNA using the Ion AmpliSeq™ Library Kit 2.0 (Thermo Fisher
+Scientific) and IonXpress™ Barcode Adapters 1-16 (Thermo Fisher Scientific). Library quality and
+quantity was assessed on a BioAnalyzer 2100 using the DNA High Sensitivity Kit reagents and
+protocol (Agilent). <br />
+  **Γονιδίωμα Αναφοράς**: hg19** <br />
+  **Στοίχιση αλληλουχιών**: Τα αλληλουχηθέντα Amplicons στοιχήθηκαν στο γονιδίωμα αναφοράς hg19 με χρήση του 
+  λογισμικού Torrent Mapping Alignment Program (TMAP), έκδοση 3.0.1 <br />
+  **Κλήση μεταλλαγών**: Η κλήση μεταλλαγών πραγματοποιήθηκε με τη χρήση του λογισμικού Torrent Variant Caller
+(TVC), έκδοση 5.10.5.0. <br />
+  **Επισημείωση μεταλλαγών**: Η επισημείωση έγινε με τη χρήση του λογισμικού SnpEff v 4.3t
+Φίτλρα μεταλλαγών Τα ακόλουθα φίλτρα χρησιμοποιήθηκαν:
+1. Αποκλεισμός μεταλλαγών τύπου NOCALL
+2. Αποκλεισμός ομόζυγων μεταλλαγών σε σχέση με το γονιδίωμα αναφοράς
+3. Αποκλεισμός μεταλλαγών με κάλυψη μικρότερη από 500
+4. Αποκλεισμός μεταλλαγών με συχνότητα (VAF) μικρότερη από 5%
+5. Αποκλεισμός μεταλλαγών με σχέση Ποιότητα/Κάλυψης (Quality By Depth) 2 μικρότερη
+από 2
+6. Αποκλεισμός μεταλλαγών εκτός εξωνικών περιοχών
+7. Αποκλεισμός μεταλλαγών εκτός των γονιδίων-στόχων  <br />
+  **Περιορισμός της ανάλυσης**: Με βάση τις εργαστηριακές μεθοδολογίες επαλήθευσης και της υπάρχουσας βιβλιογραφίας, οι
+περιορισμοί της ανάλυσης είναι 5% για πολυμορφισμούς θέσης (SNV) και 10% για μικρές, μη
+δομικές, ενθέσεις και διαγραφές.
+</p>
+
+<h1>
+Ποιοτικός έλεγχος αλληλούχισης
+</h1>
+placeholder
+
+<h1>
+Κατάλογος εξεταζόμενων γονιδίων
+</h1>
+<p class="subheader2">
+  **AKT1, ALK, AR, ATM, BCL2, BRAF, BRCA1, BRCA2, CCND1, CDK4, CDK6, CDKN2A, CHEK1, CHEK2, CTNNB1, EGFR, ERBB2, ERBB4, ESR1, FGFR1, FGFR2, 
+  FGFR3, IDH1, IDH2, JAK2, JUN, KDR, KIT, KMT2C, KRAS, MAP2K1, MDM2, MDM4, MEN1, MET, MLH1, MSH2, MSH6, mTOR, MYC, NF1, NOTCH1, NRAS, 
+  PALB2, PDGFRA, PIK3CA, PIK3CB, PTEN, RAD50, RAD51, RB1, RET, ROS1, SMAD4, STAT3, STK11, TP53**
+</p>

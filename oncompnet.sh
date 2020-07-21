@@ -53,30 +53,30 @@ mkdir -p "$LOCAL_OUTDIR/logs"
 # -d detached mode, runs container in the background
 # -t allocate a pseudo tty
 # -v mounts the volume "oncopmnet_pipeline" into container's "$MOUNT_DIR" directory
-docker run \
---name tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" \
--d \
--t \
--v /media/galadriel/fleming/oncopmnet/oncopmnet_pipeline:"$MOUNT_DIR" sgsfak/tmap-tvc
+# docker run \
+# --name tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" \
+# -d \
+# -t \
+# -v /media/galadriel/fleming/oncopmnet/oncopmnet_pipeline:"$MOUNT_DIR" sgsfak/tmap-tvc
 
-# -e env variables passed into the container
-docker exec \
--e PREFIX \
--e HGREF \
--e PARAMS_FILE \
--e TARGETS_BED \
--e HOTSPOTS_BED \
--e INPUT_BAM_name \
--e ANALYSIS_NAME \
--e INPUT_BAM \
--e MOUNT_OUTDIR \
--e THREADS \
--it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW"
+# # -e env variables passed into the container
+# docker exec \
+# -e PREFIX \
+# -e HGREF \
+# -e PARAMS_FILE \
+# -e TARGETS_BED \
+# -e HOTSPOTS_BED \
+# -e INPUT_BAM_name \
+# -e ANALYSIS_NAME \
+# -e INPUT_BAM \
+# -e MOUNT_OUTDIR \
+# -e THREADS \
+# -it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW"
 
-printf "Stopping temporary docker container:"
-docker stop tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
-printf "Removing temporary docker container:"
-docker rm tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
+# printf "Stopping temporary docker container:"
+# docker stop tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
+# printf "Removing temporary docker container:"
+# docker rm tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
 
 # Normalize - Break multiallelic variants with BCFtools (-norm)
 printf "\nNormalizing vcf and breaking multiallelic variants...\n\n"
@@ -92,6 +92,7 @@ Rscript -e "sampleName = '$PREFIX'; vcfDir = '$NORM_VCF_OUT'; output = '$LOCAL_O
 printf "\nPrinting PDF... \n\n"
 python3 -m weasyprint "$LOCAL_OUTDIR/oncopmnet_report.html" "$LOCAL_OUTDIR/oncopmnet_report.pdf" -s "styles.css" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
-# Add automated hpmnet report generation with Rmarkdown 
-# Create relevant repository & documentation
 
+
+printf "\nAnalysis Complete! \n\n"
+printf "\nResults in $LOCAL_OUTDIR \n\n"
