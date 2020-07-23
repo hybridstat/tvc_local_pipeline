@@ -1,0 +1,114 @@
+cgi,knowledge,civic,tcga_cancer,Report,GENIE,Shiny
+Waldenstrom macroglobulinemia,Waldenstrom macroglobulinemia,Waldenstrom's Macroglobulinemia,WALDEN,Waldenstrom Macroglobulinemia,Leukemia,
+,,Acoustic Neuroma,ACNEUR,Acoustic Neuroma,,
+Acute lymphoblastic leukemia,acute_lymphoblastic_leukemia,"T-cell Acute Lymphoblastic Leukemia,T-cell Leukemia,Adult B-Lymphoblastic Leukemia",ALL,Lymphoblastic leukemia,,
+Acute myeloid leukemia,acute_myeloid_leukemia,Acute Myeloid Leukemia,AML,Acute myeloid leukemia,,
+Acute promyelocytic leukemia,,Acute Promyelocytic Leukemia,APML,Acute promyelocytic leukemia,,
+Adenoid cystic carcinoma,adenoid_cystic_carcinoma,,ADCC,Adenoid cystic carcinoma,,
+Adrenal adenoma,,Adrenocortical Carcinoma,ACC,Adrenal adenoma,,
+Anaplastic oligodendroglioma,,Oligodendroglioma,AG,Anaplastic oligodendroglioma,,
+Angiosarcoma,angiosarcoma,Angiosarcoma,AS,Angiosarcoma,,
+Any cancer type,cancer_unspecified,Cancer,N/A,Unspecified,,
+Atypical chronic myeloid leukemia,atypical_chronic_myeloid_leukemia,Atypical Chronic Myeloid Leukemia,ACML,Atypical chronic myeloid leukemia,,
+B cell lymphoma,,,BCL,B cell lymphoma,,
+Basal cell carcinoma,basal_cell_carcinoma,Basal Cell Carcinoma,BCC,Basal cell carcinoma,,
+Cholangiocarcinoma,,Cholangiocarcinoma,CHOL,Cholangiocarcinoma,Hepatobiliary Cancer,biliary tract cancer
+Billiary tract,biliary_tract,"Bile Duct Adenocarcinoma,Biliary Tract Cancer",BT,Bile Duct Cancer,,
+Bladder,bladder,"Bladder Carcinoma,Invasive Bladder Transitional Cell Carcinoma,Urothelial Carcinoma,Bladder Urothelial Carcinoma",BLCA,Bladder cancer,,
+,,"Bone Ewing's Sarcoma,Ewing Sarcoma",EWIG,Bone Ewing sarcoma,Bone Cancer,bone ewing sarcoma
+Breast adenocarcinoma,"breast,breast cancer","Breast Cancer,Estrogen-receptor Positive Breast Cancer,Inflammatory Breast Carcinoma,Her2-receptor Positive Breast Cancer,Her2-receptor Negative Breast Cancer,Triple-receptor Negative Breast Cancer,Breast Carcinoma",BRCA,Breast cancer,Breast Cancer,breast cancer
+Cervix,cervical,"Cervical Cancer,Cervical Squamous Cell Carcinoma,Cervical Adenocarcinoma",CESC,Cervical cancer,Cervical Cancer,cervical cancer
+,,Chordoma,CHORD,chordoma,,
+,,Chuvash Polycythemia,CHUVASH,Chuvash Polycythemia,,
+Chronic lymphocytic leukemia,"acute_lymphocytic_leukemia, chronic_lymphocytic_leukemia","Chronic Lymphocytic Leukemia,Acute Lymphocytic Leukemia",CLL,Chronic lymphocytic leukemia,Leukemia,
+,chronic_myeloid_leukemia,"Chronic Myeloid Leukemia,Chronic Neutrophilic Leukemia,Chronic Myelomonocytic Leukemia",CML,Chronic myeloid leukemia,,"MDS/MPN, chronic myeloid leukemia"
+Colorectal adenocarcinoma,colorectal,"Colon Cancer,Colon Carcinoma,Colon Mucinous Adenocarcinoma,Colorectal Adenocarcinoma,Colorectal Cancer,Colon Adenocarcinoma",CRC,Colorectal cancer,Colorectal Cancer,colorectal cancer
+,,Rectum Cancer,READ,Rectal cancer,Colorectal Cancer,colorectal cancer
+Dermatofibrosarcoma,dermatofibrosarcoma,Dermatofibrosarcoma Protuberans,DFS,Dermatofibrosarcoma,,
+,,Desmoid Fibromatosis,DFM,Desmoid fibromatosis,,
+Endometrium,endometrial,"Endometrial Cancer,Endometrial Carcinoma,Uterine Cancer,Uterine Corpus Endometrial Carcinoma,Uterine Corpus Serous Adenocarcinoma,Endometrial Adenocarcinoma,Endometrial Hyperplasia",UCEC,Endometrial cancer,Endometrial Cancer,endometrial cancer
+Eosinophilic chronic leukemia,,"Eosinophilia,Myeloid And Lymphoid Neoplasms With Eosinophilia And Abnormalities Of PDGFRA PDGFRB and FGFR1",ECL,Eosinophilic chronic leukemia,,
+Erdheim-Chester histiocytosis,,,HISEC,Erdheim-Chester histiocytosis,,
+,esophageal,"Esophageal Carcinoma,Esophagus Adenocarcinoma,Esophagus Squamous Cell Carcinoma,Esophageal Cancer",ESCA,Esophageal cancer,Esophagogastric Cancer,esophageal cancer
+"Female germ cell tumor,Male germ cell tumor",germ-cell tumor,,GCT,Germ cell tumor,,
+Fibrous histiocytoma,,,FH,Fibrous histiocytoma,,
+Stomach,gastric,"Gastric Adenocarcinoma,Gastric Adenosquamous Carcinoma,Stomach Cancer,Stomach Carcinoma,Gastrointestinal Neuroendocrine Tumor",STAD,Gastric cancer,Esophagogastric Cancer,gastric cancer
+Gastrointestinal stromal,gastrointestinal_stromal_tumor,Gastrointestinal Stromal Tumor,GIST,Gastric (stromal) cancer,Gastrointestinal Stromal Tumor,gastric stromal
+Giant cell astrocytoma,,Astrocytoma,GCA,Giant cell astrocytoma,,
+Glioblastoma,,Supratentorial Glioblastoma Multiforme,GBM,Glioblastoma,"CNS Cancer, Glioma",glioblastoma
+Glioblastoma multiforme,,Glioblastoma Multiforme,GMBLGG,Glioma,"CNS Cancer, Glioma",glioma
+Glioma,glioma,"Brain Glioma,Malignant Glioma",LGG,Glioma,"CNS Cancer, Glioma",glioma
+Hairy-Cell leukemia,hairy_cell_leukemia,Hairy Cell Leukemia,HCL,Hairy-Cell leukemia,Leukemia,hairy cell leukemia
+"Head an neck,Head an neck squamous",head_neck,"Head And Neck Carcinoma,Head And Neck Squamous Cell Carcinoma,Oropharynx Cancer,Head And Neck Cancer,Laryngeal Carcinoma,Salivary Gland Carcinoma",HNSC,Head and neck cancer,Head and Neck Cancer,head and neck cancer
+Hematologic malignancies,,Hematologic Cancer,HEMATO,Hematologic malignancies,,
+Hepatic carcinoma,hepatocellular_carcinoma,"Hepatocellular Carcinoma,Hepatocellular Fibrolamellar Carcinoma,Hepatocellular Mixed Fibrolamellar Carcinoma,Intrahepatic",LIHC,Hepatocellular cancer,Hepatobiliary Cancer,hepatocellular carcinoma
+Hyper eosinophilic advanced snydrome,hypereosinophilic_syndrome,,HES,Hypereosinphilic cancer,,hypereosinphilic syndrome
+Inflammatory myofibroblastic,,,IM,Inflammatory myofibroblastic cancer,,
+Lagerhans cell histiocytosis,fibrous_histiocytoma,"Langerhans-Cell Histiocytosis,Histiocytosis",HISLC,Lagerhans cell histiocytosis,,
+Leukemia,,"Leukemia,Acute Leukemia",LK,Leukemia,,
+Liposarcoma,liposarcomas,"Liposarcoma,Myxoid Liposarcoma",LIP,Liposarcoma,,liposarcoma
+Lung,lung,"Lung Carcinoma,Lung Cancer,Lung Small Cell Carcinoma",SCLC,Small cell lung cancer,Small Cell Lung Cancer,lung cancer
+Lung adenocarcinoma,lung_adeno,"Bronchogenic Lung Adenocarcinoma,Lung Acinar Adenocarcinoma,Lung Adenocarcinoma",LUAD,Lung adenocarcinoma,Non-Small Cell Lung Cancer,lung cancer
+Lung squamous cell,lung_squamous,Lung Squamous Cell Carcinoma,LUSC,Lung squamous cell,Non-Small Cell Lung Cancer,"lung squa., lung cancer"
+Lymphangioleiomyomatosis,lymphangioleiomyomatosis,,LYMPHANG,Lymphangio-leiomyomatosis,,lymphangio-leiomyomatosis
+Lymphoma,lymphoma,Anaplastic Large Cell Lymphoma,LY,Malignant Lymphoma,,
+,,Lynch Syndrome,LYNCH,Lynch syndrome,,
+Malignant astrocytoma,,Astrocytoma,MA,Malignant astrocytoma,,
+Malignant peripheral nerve sheat tumor,,,MPN,Malignant peripheral nerve sheat tumor,,
+Malignant rhabdoid tumor,,,MRT,Malignant rhabdoid tumor,,
+Mantle cell lymphoma,mantle_cell_lymphoma,Mantle Cell Lymphoma,MCL,Mantle cell lymphoma,Non-Hodgkin Lymphoma,mantle cell lymphoma
+,systemic_mastocytosis,Systemic Mastocytosis,MASTOCYT,Benign Mastocytoma,Mastocytosis,mastocytosis
+,myelodisplastic_syndrome,,MYELODIS,MDS,Myelodysplasia,myelodisplastic syndrome
+Medulloblastoma,medulloblastoma,Brain Medulloblastoma,MB,Medulloblastoma,CNS Cancer,medulloblastoma
+Megakaryoblastic leukemia,megakaryoblastic_leukemia,,MKBLK,Megakaryoblastic leukemia,Leukemia,megakaryoblastic leukemia
+Cutaneous melanoma,melanoma,"Mucosal Melanoma,Malignant Anus Melanoma,Melanoma,Skin Melanoma,Uveal Melanoma",MAM,Melanoma,"Melanoma, Anal Cancer,Melanoma",melanoma
+,,Skin Squamous Cell Carcinoma,SSCC,Squamous carcinoma,,
+Meningioma,"meningioma, PEComa",,MEN,Meningioma,CNS Cancer,meningioma
+,,Merkel Cell Carcinoma,MERK,Merkel carc.,,merkel carcinoma
+Mesothelioma,mesothelioma,"Malignant Mesothelioma,Malignant Pleural Mesothelioma,Peritoneal Mesothelioma",MESO,Mesothelioma,Mesothelioma,mesothelioma
+Myelodisplasic proliferative syndrome,myeloproliferative_neoplasm,Chronic Myeloproliferative Disease,MDPS,Chronic Myeloproliferative Disease,Myeloproliferative Neoplasm,myeloproliferative neoplasm
+Multiple myeloma,,Multiple Myeloma,MM,Multiple myeloma,,
+Myelodisplasic syndrome,,,MDS,Myelodisplasic syndrome,,
+Myelofibrosis,myelofibrosis,Myelofibrosis,MY,Myelofibrosis,,myelofibrosis
+Myeloma,myeloma,,MYMA,Myeloma,Multiple Myeloma,myeloma
+,inflammatory_myofibroblastic_tumor,Inflammatory Myofibroblastic Tumor,MYFIB,Myofibroma,,myofibroblastic tumor
+Neuroblastoma,neuroblastoma,Neuroblastoma,NB,Neuroblastoma,,neuroblastoma
+Neuroendocrine,,Neuroendocrine Tumor,NEU,Neuroendocrine tumor,,
+Neurofibroma,,,NF,Neurofibroma,,
+,"malignant_peripheral_nerve_sheat_tumor, leukemia",Malignant Peripheral Nerve Sheath Tumor,MPNST,Neurosarcoma,,neurosarcoma
+Non-small cell lung,,Non-small Cell Lung Carcinoma,NSCLC,Non-small cell lung cancer,,
+NUT midline carcinoma,NUT_midline_carcinoma,NUT Midline Carcinoma,NMC,NUT midline carcinoma,,NUT carcinoma
+Osteosarcoma,,Osteosarcoma,OS,Osteosarcoma,Bone Cancer,osteosarcoma
+Ovary,ovarian,"Epithelial Ovarian Cancer,Ovarian Cancer,Ovarian Carcinoma,Ovarian Granulosa Cell Tumor,Ovarian Serous Carcinoma,Ovarian Serous Cystadenocarcinoma,Female Reproductive Organ Cancer,Ovarian Serous Cystadenocarcinoma",OV,Ovarian cancer,Ovarian Cancer,ovarian cancer
+,ovarian_rhabdoid_tumor,,OVR,Ovarian rhabdoid cancer,Ovarian Cancer,rhabdoid tumor
+Pancreas,pancreatic,"Pancreatic Carcinoma,Pancreatic Cancer,Pancreatic Ductal Carcinoma,Tumor Of Exocrine Pancreas",PA,Pancreatic cancer,,
+Pancreas adenocarcinoma,pancreatic,"Pancreas Adenocarcinoma,Pancreatic Ductal Adenocarcinoma,Pancreatic Adenocarcinoma",PAAD,Pancreas adenocarcinoma,Pancreatic Cancer,pancreatic cancer
+,,Papillary Adenocarcinoma,PAPAC,Papillary adenocarcinoma,,
+,,,PCPG,Gangliocytic Paraganglioma,,paraganglioma
+Pediatric glioma,,,PG,Pediatric glioma,,
+,,Pediatric Fibrosarcoma,PF,Pediatric fibrosarcoma,,
+,,Pericytoma,PCYT,Pericytoma,,
+,,Peutz-Jeghers Syndrome,PJSYN,Peutz-Jeghers syndrome,,
+Plexiform neurofibroma,,Plexiform Neurofibroma,PLEN,Plexiform neurofibroma,,
+,,Polycythemia Vera,VERA,Polycythemia vera,,
+Prostate adenocarcinoma,prostate,"Prostate Cancer,Prostate Carcinoma",PRAD,Prostate cancer,Prostate Cancer,prostate cancer
+,,Pseudomyxoma Peritonei,PSMYX,Pseudomyxoma peritonei,,
+,,PTEN Harmatoma Tumor Syndrome,HARTS,Pten harmatoma tumor syndrome,,
+Renal,renal,"Renal Cell Carcinoma,Renal Clear Cell Carcinoma,Renal Carcinoma,Papillary Renal Cell Carcinoma",KIPAN,Renal cancer,Kidney cancer,renal cancer
+Renal angiomyolipoma,,,RA,Renal angiomyolipoma,,
+Retinoblastoma,retinoblastoma,,RTBL,Retinoblastoma,Retinoblastoma,retinoblastoma
+Rhabdomyosarcoma,rhabdomyosarcoma,Rhabdoid Cancer,RHBDS,Rhabdomyo-sarcoma,,Rhabdomyosarcoma
+Salivary glands,,,SG,Salivary glands cancer,,
+Sarcoma,sarcoma,Sarcoma,SARC,Soft Tissue Sarcoma,"Breast Sarcoma,Soft Tissue Sarcoma,Uterine Sarcoma",sarcoma
+Schwannoma,schwannoma,,SCHW,Schwannoma,,schwannoma
+,,Scrotum Paget's Disease,SCPD,Scrotum paget's disease,,
+,,Sezary's Disease,SEZARY,Sezary's disease,,
+Solid tumors,,Solid Tumor,SOLID,Solid tumors,,
+Systemic mastocytosis,,,SYSMAST,Systemic mastocytosis,,
+,,T-cell Large Granular Lymphocyte Leukemia,TCLGL,T-LGL leukemia,Leukemia,T-cell large granular lymphocytic leukemia
+Thymic,thymic,Thymic Carcinoma,THYM,Thymic carcinoma,Thymic Tumor,thymic carcinoma
+Thyroid,thyroid,"Thyroid Cancer,Thyroid Carcinoma,Thyroid Medullary Carcinoma,Papillary Thyroid Carcinoma,Anaplastic Thyroid Cancer",THCA,Thyroid cancer,Thyroid Cancer,thyroid cancer
+Thyroid carcinoma,,Thyroid Hurthle Cell Carcinoma,THCA,Thyroid hurthle cell carcinoma,,
+,,Tuberous Sclerosis,TUBSC,tTuberous sclerosis,,
+Urinary tract carcinoma,,,UTC,Urinary tract cancer,,
+,,Von Hippel-Lindau Disease,VHLD,Von Hippel-Lindau disease,,

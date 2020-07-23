@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE, comment = NA)
 </p>
 
 <p class="subheader">
-  Τύπος κακοήθειας (ICD-10):
+  Τύπος κακοήθειας (ICD-10): **`r cancer_report`**<br />
 </p>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
@@ -54,33 +54,55 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE, comment = NA)
 Ανιχνεύθηκαν οι παρακάτω παθογόνες παραλλαγές:
 </p>
 ```{r actionable_variants, echo=FALSE}
-kable(SNV[,c(1:5)]) %>%
+kable(results) %>%
   kable_styling(full_width = TRUE) %>%
-  row_spec(0, bold = T, font_size = "10", align = "left", background = "#ffffff !important", color = "#248f8f !important")
+  row_spec(0, bold = T, font_size = "10", background = "#ffffff !important", color = "#248f8f !important")
 ```
 <p class="footer">
   \*ονοματολογία γονίδιων και παραλλαγών σύμφωνα με το HGVS(http://varnomen.hgvs.org/ (http://varnomen.hgvs.org/)) <br />
   \*Τα δεδομένα αντλήθηκαν με το πακέτο VariantAnnotation, Bioconductor(https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html)
 </p>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+
+```{r signatures, echo=FALSE}
+kable(signatures, booktabs = TRUE) %>%
+  kable_styling(full_width = TRUE) %>%
+  row_spec(1, bold = T, font_size = "10", align = "center !important")
+```
+<br />
+<br />
+
 <h1>
 Ερμηνεία Αποτελεσμάτων
 </h1>
-placeholder
+
+<p class="comment">
+Αποδίδονται οι παρακάτω ερμηνείες αποτελεσμάτων:
+</p>
+```{r annotations_table, echo=FALSE}
+kable(annotations) %>%
+  kable_styling(full_width = TRUE) %>%
+  row_spec(0, bold = T, font_size = "10", background = "#ffffff !important", color = "#248f8f !important")
+```
 
 <h1>
 Μεθοδολογία
 </h1>
 
 <p class="subheader2">
-  **Εξαγωγή DNA**: DNA was extracted from paraffin section using the MagMAX™ FFPE DNA/RNA Ultra kit from
-Applied Biosystems™ (Thermo Fisher Scientific) according to manufacturer’s instructions. DNA
-concentration was assessed on NanoDrop™ 1000 and Qubit® 2.0 Fluorometer (Thermo Fisher
-Scientific). <br />
-  **Κατασκευή βιβλιοθήκης**: Library was generated from 30ng DNA using the Ion AmpliSeq™ Library Kit 2.0 (Thermo Fisher
-Scientific) and IonXpress™ Barcode Adapters 1-16 (Thermo Fisher Scientific). Library quality and
-quantity was assessed on a BioAnalyzer 2100 using the DNA High Sensitivity Kit reagents and
-protocol (Agilent). <br />
+  **Εξαγωγή DNA**: Το DNA απομονώθηκε από μονιμοποιημένο σε τομή παραφίνης ιστό χρησιμοποιώντας το
+MagMAXTM FFPE DNA/RNA Ultra κιτ, της Applied Biosystems (Thermo Fisher) με βάση τις
+οδηγίες του κατασκευαστή. Η ποσότητα του γενομικού υλικού αξιολογήθηκε στο
+φασματοφωτόμετρο NanoDropTM ND-1000 καθώς και στο φθοριόμετρο Qubit® 2.0
+(Thermo Fisher). <br />
+  **Κατασκευή βιβλιοθήκης**: Μία βιβλιοθήκη κατασκευάστηκε από περίπου 30ng DNA χρησιμοποιώντας
+αντιδραστήρια των Ion AmpliSeqTM Library 2.0 και IonXpressTM Barcode Adapters 1-16 κιτ
+(Thermo Fisher). <br />
   **Γονιδίωμα Αναφοράς**: hg19** <br />
   **Στοίχιση αλληλουχιών**: Τα αλληλουχηθέντα Amplicons στοιχήθηκαν στο γονιδίωμα αναφοράς hg19 με χρήση του 
   λογισμικού Torrent Mapping Alignment Program (TMAP), έκδοση 3.0.1 <br />
@@ -104,7 +126,15 @@ protocol (Agilent). <br />
 <h1>
 Ποιοτικός έλεγχος αλληλούχισης
 </h1>
-placeholder
+
+<p class="comment">
+Από το έλεγχο ποιότητας προκύπτουν τα παρακάτω στοιχεία:
+</p>
+```{r metrics_table, echo=FALSE}
+kable(metrics) %>%
+  kable_styling(full_width = TRUE) %>%
+  row_spec(0, bold = T, font_size = "10", background = "#ffffff !important", color = "#248f8f !important")
+```
 
 <h1>
 Κατάλογος εξεταζόμενων γονιδίων

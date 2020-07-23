@@ -18,9 +18,9 @@ exitWithError () {
   exit
 }
 
-if [[ $# == 3 ]]; then
+if [[ $# == 4 ]]; then
     WORKFLOW="local_workflow.sh"
-elif [[ $# == 4 ]]; then
+elif [[ $# == 5 ]]; then
     WORKFLOW="local_workflow_hotspots.sh"
 else
     exitWithError "Wrong number of parameters."
@@ -28,8 +28,9 @@ fi
 
 export ANALYSIS_NAME="$1"
 export INPUT_BAM_name="$2"
-export THREADS="$3"
-export HOTSPOTS_BED_name="$4"
+export CANCER="$3"
+export THREADS="$4"
+export HOTSPOTS_BED_name="$5"
 
 export MOUNT_DIR="/data"
 export LOCAL_DIR="/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline"
@@ -87,12 +88,10 @@ printf "\nNormalizing vcf and breaking multiallelic variants...\n\n"
 
 # Annotate VCF with Bioconductor's VariantAnnotation
 printf "\nRunning variant annotaion with VariantAnnotation package...\n\n"
-Rscript -e "sampleName = '$PREFIX'; vcfDir = '$NORM_VCF_OUT'; output = '$LOCAL_OUTDIR'; rmarkdown::render('scripts/oncopmnet.Rmd', output_file = 'oncopmnet_report.html', output_dir = output)" > $LOCAL_OUTDIR/logs/out 2>$LOCAL_OUTDIR/logs/error
+Rscript -e "sampleName = '$PREFIX'; cancer = '$CANCER'; vcfDir = '$NORM_VCF_OUT'; output = '$LOCAL_OUTDIR'; rmarkdown::render('scripts/oncopmnet.Rmd', output_file = 'oncopmnet_report.html', output_dir = output)" > $LOCAL_OUTDIR/logs/out 2>$LOCAL_OUTDIR/logs/error
 
 printf "\nPrinting PDF... \n\n"
 python3 -m weasyprint "$LOCAL_OUTDIR/oncopmnet_report.html" "$LOCAL_OUTDIR/oncopmnet_report.pdf" -s "styles.css" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
-
-
 
 printf "\nAnalysis Complete! \n\n"
 printf "\nResults in $LOCAL_OUTDIR \n\n"
