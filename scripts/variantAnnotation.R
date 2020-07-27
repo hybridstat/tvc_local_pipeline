@@ -83,9 +83,9 @@ annotable[,1] <- ifelse(SNV$VAR_id == "",
 annotable[,2] <- SNV[,6]
 
 
-metrics <- data.frame(matrix(ncol = 4, nrow = 1))
+metrics_file <- list.files(pattern='alignment_stats.txt', path=output, full.names=T)
+metrics <- read.delim(file=metrics_file, sep="\t", header=F)
 colnames(metrics) <- c("Συνολικά Διαβάσματα", "Στοιχισμένα Διαβάσματα", "Στοιχισμένα Διαβάσματα (>Q20)", "Μέσο μήκος διαβάσματος")
-
 
 results <- unique(SNV[,1:5])
 rownames(results) <- NULL

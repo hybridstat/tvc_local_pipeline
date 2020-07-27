@@ -94,6 +94,10 @@ kable(annotations) %>%
 Μεθοδολογία
 </h1>
 
+<p class="comment">
+Από την επεξεργασία του δείγματος μέχρι και την ανάλυση των δεδομένων ακολουθήθηκαν τα εξής βήματα ανάλυσης:
+</p>
+
 <p class="subheader2">
   **Εξαγωγή DNA**: Το DNA απομονώθηκε από μονιμοποιημένο σε τομή παραφίνης ιστό χρησιμοποιώντας το
 MagMAXTM FFPE DNA/RNA Ultra κιτ, της Applied Biosystems (Thermo Fisher) με βάση τις
@@ -103,7 +107,7 @@ MagMAXTM FFPE DNA/RNA Ultra κιτ, της Applied Biosystems (Thermo Fisher) μ
   **Κατασκευή βιβλιοθήκης**: Μία βιβλιοθήκη κατασκευάστηκε από περίπου 30ng DNA χρησιμοποιώντας
 αντιδραστήρια των Ion AmpliSeqTM Library 2.0 και IonXpressTM Barcode Adapters 1-16 κιτ
 (Thermo Fisher). <br />
-  **Γονιδίωμα Αναφοράς**: hg19** <br />
+  **Γονιδίωμα Αναφοράς**: hg19 <br />
   **Στοίχιση αλληλουχιών**: Τα αλληλουχηθέντα Amplicons στοιχήθηκαν στο γονιδίωμα αναφοράς hg19 με χρήση του 
   λογισμικού Torrent Mapping Alignment Program (TMAP), έκδοση 3.0.1 <br />
   **Κλήση μεταλλαγών**: Η κλήση μεταλλαγών πραγματοποιήθηκε με τη χρήση του λογισμικού Torrent Variant Caller
@@ -132,7 +136,7 @@ MagMAXTM FFPE DNA/RNA Ultra κιτ, της Applied Biosystems (Thermo Fisher) μ
 </p>
 ```{r metrics_table, echo=FALSE}
 kable(metrics) %>%
-  kable_styling(full_width = TRUE) %>%
+  kable_styling(full_width = TRUE, "bordered") %>%
   row_spec(0, bold = T, font_size = "10", background = "#ffffff !important", color = "#248f8f !important")
 ```
 

@@ -74,6 +74,13 @@ samtools sort -@ $THREADS -o "$SORTED_BAM" -O bam \
 echo Indexing sorted BAM...
 samtools index -b "$SORTED_BAM" || exit $?
 
+echo Generating alignment stats...
+READS_RAW=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'raw total sequences:' | cut -f3`
+READS_MAPPED=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'reads mapped:' | cut -f3`
+READS_MAPQ20=`samtools view -c -q 20 "$INPUT_BAM"`
+READ_LENGTH=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'average length:' | cut -f3`
+echo -e "$READS_RAW \t $READS_MAPPED \t $READS_MAPQ20 \t $READ_LENGTH" >"$MOUNT_OUTDIR/${PREFIX}_alignment_stats.txt"
+
 echo Running variant caller...
 variant_caller_pipeline.py -o "$MOUNT_OUTDIR" \
     --num-threads $THREADS \

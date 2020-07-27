@@ -48,12 +48,10 @@ export NORM_VCF_OUT="$LOCAL_OUTDIR"/TSVC_variants_norm.vcf
 
 mkdir -p "$LOCAL_OUTDIR/logs"
 
-#export PREFIX=/media/galadriel/hybridstat/elixir_project/tools/samtools-1.9/samtools
-
-# --name Anlysis specific name or ID
-# -d detached mode, runs container in the background
-# -t allocate a pseudo tty
-# -v mounts the volume "oncopmnet_pipeline" into container's "$MOUNT_DIR" directory
+# # --name Anlysis specific name or ID
+# # -d detached mode, runs container in the background
+# # -t allocate a pseudo tty
+# # -v mounts the volume "oncopmnet_pipeline" into container's "$MOUNT_DIR" directory
 # docker run \
 # --name tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" \
 # -d \
@@ -72,19 +70,19 @@ mkdir -p "$LOCAL_OUTDIR/logs"
 # -e INPUT_BAM \
 # -e MOUNT_OUTDIR \
 # -e THREADS \
-# -it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW"
+# -it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
 # printf "Stopping temporary docker container:"
 # docker stop tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
 # printf "Removing temporary docker container:"
 # docker rm tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
 
-# Normalize - Break multiallelic variants with BCFtools (-norm)
-printf "\nNormalizing vcf and breaking multiallelic variants...\n\n"
-"$LOCAL_DIR"/tools/bcftools-1.10.2/bcftools norm \
--f "$LOCAL_DIR"/ref_genome/hg19/hg19.fasta \
--m- "$VCF_OUT" \
--o "$NORM_VCF_OUT"
+# # Normalize - Break multiallelic variants with BCFtools (-norm)
+# printf "\nNormalizing vcf and breaking multiallelic variants...\n\n"
+# "$LOCAL_DIR"/tools/bcftools-1.10.2/bcftools norm \
+# -f "$LOCAL_DIR"/ref_genome/hg19/hg19.fasta \
+# -m- "$VCF_OUT" \
+# -o "$NORM_VCF_OUT" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
 # Annotate VCF with Bioconductor's VariantAnnotation
 printf "\nRunning variant annotaion with VariantAnnotation package...\n\n"
