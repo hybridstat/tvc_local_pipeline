@@ -1,7 +1,14 @@
+```{r logo, echo=FALSE}
+htmltools::img(src = knitr::image_uri("/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline/oncoPMNET_logo.png"), 
+               alt = 'logo', 
+               class = 'centered')
+```
 
+<p class="title">
+Έκθεση αποτελεσμάτων
+</p>
 <p class="title2">
-  Έκθεση αποτελεσμάτων<br />
-  Καθορισμός γενωμικών αλλαγών σε συμπαγείς όγκους
+Καθορισμός γενωμικών αλλαγών σε συμπαγείς όγκους
 </p>
 
 ```{r setup, include=FALSE}

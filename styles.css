@@ -27,12 +27,20 @@ body {
   padding: .25rem;
 }
 
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  height: 160px;
+}
+
 .title {
   padding: 5px !important;
   border-radius: 2px !important;
-  font-size: 35px !important;
+  font-size: 25px !important;
   color: #336699 !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .title2 {
