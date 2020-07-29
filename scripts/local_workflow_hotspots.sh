@@ -1,5 +1,9 @@
 #!/bin/bash
 
+printToLog() {
+	date +"%F__%T ---> $1"
+}
+
 usage () {
   printf "USAGE:\n"
   printf "oncopmnet.sh <analysis-name> <input-bam-file> <nThreads> <input-hotspots-bed-file>\n\n"
@@ -40,7 +44,7 @@ BED_FNAME=$(basename "$TARGETS_BED" | sed 's/\.[^.]*$//')
 PTRIM_BED="$MOUNT_OUTDIR/${BED_FNAME}_unmerged_detail.bed"
 PLAIN_BED="$MOUNT_OUTDIR/${BED_FNAME}_merged_plain.bed"
 
-echo Preraring merged target BED file 
+printToLog "Preraring merged target BED file"
 tvcutils validate_bed \
 	--target-regions-bed "$TARGETS_BED" \
 	--reference "$HGREF" \
@@ -52,7 +56,7 @@ HOTSPOTS_FNAME=$(basename "$HOTSPOTS_BED" | sed 's/\.[^.]*$//')
 HOTSPOTS_LEFT_BED="$MOUNT_OUTDIR/${HOTSPOTS_FNAME}_left_aligned.bed"
 HOTSPOTS_VCF="$MOUNT_OUTDIR/${HOTSPOTS_FNAME}.vcf"
 
-echo Preparing Hotspots VCF
+printToLog "Preparing Hotspots VCF"
 tvcutils prepare_hotspots \
 	--input-bed "$HOTSPOTS_BED" \
 	--reference "$HGREF" \
@@ -61,27 +65,27 @@ tvcutils prepare_hotspots \
 	--output-vcf "$HOTSPOTS_VCF" \
 	--unmerged-bed "$PTRIM_BED"
 
-echo Running tmap...
+printToLog "Running tmap..."
 tmap mapall -J 25 --end-repair 15 --do-repeat-clip --context \
 	-u -v --prefix-exclude 5 -Y \
 	-r "$INPUT_BAM" -f "$HGREF" -o 2 -n $THREADS \
 	-i bam -s "$ALIGNED_BAM" stage1 map4 || exit $?
 
-echo Sorting aligned BAM...
+printToLog "Sorting aligned BAM..."
 samtools sort -@ $THREADS -o "$SORTED_BAM" -O bam \
 	-T `basename "$ALIGNED_BAM"` "$ALIGNED_BAM" || exit $?
 
-echo Indexing sorted BAM...
+printToLog "Indexing sorted BAM..."
 samtools index -b "$SORTED_BAM" || exit $?
 
-echo Generating alignment stats...
+printToLog "Generating alignment stats..."
 READS_RAW=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'raw total sequences:' | cut -f3`
 READS_MAPPED=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'reads mapped:' | cut -f3`
 READS_MAPQ20=`samtools view -c -q 20 "$INPUT_BAM"`
 READ_LENGTH=`samtools stats "$INPUT_BAM" | grep '^SN' | grep 'average length:' | cut -f3`
 echo -e "$READS_RAW \t $READS_MAPPED \t $READS_MAPQ20 \t $READ_LENGTH" >"$MOUNT_OUTDIR/${PREFIX}_alignment_stats.txt"
 
-echo Running variant caller...
+printToLog "Running variant caller..."
 variant_caller_pipeline.py -o "$MOUNT_OUTDIR" \
     --num-threads $THREADS \
     --region-bed "$PLAIN_BED" \

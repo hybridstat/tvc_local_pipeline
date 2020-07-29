@@ -7,6 +7,10 @@ set -e
 # Pass output to rmarkdown and generate pdf
 # Document
 
+printToLog() {
+	date +"%F__%T ---> $1"
+}
+
 usage () {
   printf "USAGE:\n"
   printf "`basename $0` <analysis-name> <input-bam-file> <nThreads> <input-hotspots-bed-file (optional)>\n\n"
@@ -48,48 +52,55 @@ export NORM_VCF_OUT="$LOCAL_OUTDIR"/TSVC_variants_norm.vcf
 
 mkdir -p "$LOCAL_OUTDIR/logs"
 
-# # --name Anlysis specific name or ID
-# # -d detached mode, runs container in the background
-# # -t allocate a pseudo tty
-# # -v mounts the volume "oncopmnet_pipeline" into container's "$MOUNT_DIR" directory
-# docker run \
-# --name tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" \
-# -d \
-# -t \
-# -v /media/galadriel/fleming/oncopmnet/oncopmnet_pipeline:"$MOUNT_DIR" sgsfak/tmap-tvc
+printToLog "Statring variant calling analysis with TVC in temporary container:n"
+printToLog "DOCKER RUN START" > $LOCAL_OUTDIR/logs/out 2>$LOCAL_OUTDIR/logs/error
+# --name Anlysis specific name or ID
+# -d detached mode, runs container in the background
+# -t allocate a pseudo tty
+# -v mounts the volume "oncopmnet_pipeline" into container's "$MOUNT_DIR" directory
+docker run \
+--name tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" \
+-d \
+-t \
+-v /media/galadriel/fleming/oncopmnet/oncopmnet_pipeline:"$MOUNT_DIR" sgsfak/tmap-tvc
 
-# # -e env variables passed into the container
-# docker exec \
-# -e PREFIX \
-# -e HGREF \
-# -e PARAMS_FILE \
-# -e TARGETS_BED \
-# -e HOTSPOTS_BED \
-# -e INPUT_BAM_name \
-# -e ANALYSIS_NAME \
-# -e INPUT_BAM \
-# -e MOUNT_OUTDIR \
-# -e THREADS \
-# -it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+printToLog "Running TVC analysis in containter's mounted directory"
+printToLog "DOCKER EXEC START">> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+# -e env variables passed into the container
+docker exec \
+-e PREFIX \
+-e HGREF \
+-e PARAMS_FILE \
+-e TARGETS_BED \
+-e HOTSPOTS_BED \
+-e INPUT_BAM_name \
+-e ANALYSIS_NAME \
+-e INPUT_BAM \
+-e MOUNT_OUTDIR \
+-e THREADS \
+-it tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name" "$MOUNT_DIR"/scripts/"$WORKFLOW" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
-# printf "Stopping temporary docker container:"
-# docker stop tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
-# printf "Removing temporary docker container:"
-# docker rm tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
+printToLog "Stopping temporary docker container:"
+docker stop tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
+printToLog "Removing temporary docker container:"
+docker rm tmp_"$ANALYSIS_NAME"_"$INPUT_BAM_name"
 
-# # Normalize - Break multiallelic variants with BCFtools (-norm)
-# printf "\nNormalizing vcf and breaking multiallelic variants...\n\n"
-# "$LOCAL_DIR"/tools/bcftools-1.10.2/bcftools norm \
-# -f "$LOCAL_DIR"/ref_genome/hg19/hg19.fasta \
-# -m- "$VCF_OUT" \
-# -o "$NORM_VCF_OUT" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+# Normalize - Break multiallelic variants with BCFtools (-norm)
+printToLog "Normalizing vcf and breaking multiallelic variants"
+printToLog "BCFTOOLS NOTMALISATION START">> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+"$LOCAL_DIR"/tools/bcftools-1.10.2/bcftools norm \
+-f "$LOCAL_DIR"/ref_genome/hg19/hg19.fasta \
+-m- "$VCF_OUT" \
+-o "$NORM_VCF_OUT" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
 # Annotate VCF with Bioconductor's VariantAnnotation
-printf "\nRunning variant annotaion with VariantAnnotation package...\n\n"
-Rscript -e "sampleName = '$PREFIX'; cancer = '$CANCER'; vcfDir = '$NORM_VCF_OUT'; output = '$LOCAL_OUTDIR'; rmarkdown::render('scripts/oncopmnet.Rmd', output_file = 'oncopmnet_report.html', output_dir = output)" > $LOCAL_OUTDIR/logs/out 2>$LOCAL_OUTDIR/logs/error
+printToLog "Running variant annotaion with VariantAnnotation package"
+printToLog "VARIANTANNOTATION START">> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+Rscript -e "sampleName = '$PREFIX'; cancer = '$CANCER'; vcfDir = '$NORM_VCF_OUT'; output = '$LOCAL_OUTDIR'; rmarkdown::render('scripts/oncopmnet.Rmd', output_file = 'oncopmnet_report.html', output_dir = output)" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
-printf "\nPrinting PDF... \n\n"
+printToLog "Printing PDF"
+printToLog "WEASYPRINT START">> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 python3 -m weasyprint "$LOCAL_OUTDIR/oncopmnet_report.html" "$LOCAL_OUTDIR/oncopmnet_report.pdf" -s "styles.css" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
-printf "\nAnalysis Complete! \n\n"
+printToLog "Analysis Complete!"
 printf "\nResults in $LOCAL_OUTDIR \n\n"
