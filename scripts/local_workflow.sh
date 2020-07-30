@@ -19,9 +19,9 @@ if [[ ! -f "$INPUT_BAM" ]]; then
   exitWithError "Input BAM file $INPUT_BAM not found. Please check analysis name and/or bam file name."
 fi
 
-# if [ -d "$MOUNT_OUTDIR" ]; then
-#     exitWithError "Directory $MOUNT_OUTDIR exists. Sample $PREFIX has already been analyzed under analysis $ANALYSIS_NAME. Please remove $PREFIX subdirectory or choose a different analysis name or BAM sample for this analysis."
-# fi
+if [ -d "$MOUNT_OUTDIR" ]; then
+    exitWithError "Directory $MOUNT_OUTDIR exists. Sample $PREFIX has already been analyzed under analysis $ANALYSIS_NAME. Please remove $PREFIX subdirectory or choose a different analysis name or BAM sample for this analysis."
+fi
 
 mkdir -p "$MOUNT_OUTDIR"
 
