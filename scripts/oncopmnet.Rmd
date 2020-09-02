@@ -1,5 +1,5 @@
 ```{r logo, echo=FALSE}
-htmltools::img(src = knitr::image_uri("/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline/oncoPMNET_logo.png"), 
+htmltools::img(src = knitr::image_uri("/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline/report_extra/oncoPMNET_logo.png"), 
                alt = 'logo', 
                class = 'centered')
 ```
@@ -14,7 +14,6 @@ htmltools::img(src = knitr::image_uri("/media/galadriel/fleming/oncopmnet/oncopm
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache = FALSE, comment = NA)
   source("variantAnnotation.R")
-  # source(paste0(INSTALL_DIR,"/bin/tableMakeover.R"))
 ```
 
 <p class="title3">

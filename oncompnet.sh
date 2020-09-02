@@ -13,7 +13,7 @@ printToLog() {
 
 usage () {
   printf "USAGE:\n"
-  printf "`basename $0` <analysis-name> <input-bam-file> <nThreads> <input-hotspots-bed-file (optional)>\n\n"
+  printf "`basename $0` <analysis-name> <input-bam-file> <cancer_acronym> <nThreads> <input-hotspots-bed-file (optional)>\n\n"
 }
 
 exitWithError () {
@@ -44,7 +44,7 @@ export TARGETS_BED="$MOUNT_DIR/bed/solid_custom_merged.bed"
 export INPUT_BAM="$MOUNT_DIR/datasets/$ANALYSIS_NAME/$INPUT_BAM_name"
 export HOTSPOTS_BED="$MOUNT_DIR/hotspots/$HOTSPOTS_BED_name"
 
-export PREFIX=Sample_$(/media/galadriel/hybridstat/elixir_project/tools/samtools-1.9/samtools view -H "$LOCAL_DIR/datasets/$ANALYSIS_NAME/$INPUT_BAM_name" |fgrep @RG | fgrep SM:| head | tr '\t' '\n' | fgrep SM: | sed -e 's/SM://' -e 's|[ /:$#]|_|g' | uniq)
+export PREFIX=Sample_${INPUT_BAM_name%".bam"}
 export MOUNT_OUTDIR="$MOUNT_DIR/tvc-out/$ANALYSIS_NAME/$PREFIX"
 export LOCAL_OUTDIR="$LOCAL_DIR/tvc-out/$ANALYSIS_NAME/$PREFIX"
 export VCF_OUT="$LOCAL_OUTDIR"/TSVC_variants.vcf
@@ -100,7 +100,7 @@ Rscript -e "sampleName = '$PREFIX'; cancer = '$CANCER'; vcfDir = '$NORM_VCF_OUT'
 
 printToLog "Printing PDF"
 printToLog "WEASYPRINT START">> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
-python3 -m weasyprint "$LOCAL_OUTDIR/oncopmnet_report.html" "$LOCAL_OUTDIR/oncopmnet_report.pdf" -s "styles.css" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
+python3 -m weasyprint "$LOCAL_OUTDIR/oncopmnet_report.html" "$LOCAL_OUTDIR/oncopmnet_report.pdf" -s "report_extra/styles.css" >> $LOCAL_OUTDIR/logs/out 2>>$LOCAL_OUTDIR/logs/error
 
 printToLog "Analysis Complete!"
 printf "\nResults in $LOCAL_OUTDIR \n\n"

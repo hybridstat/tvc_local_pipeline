@@ -19,7 +19,7 @@ library(kableExtra)
 
 ### MATCH CANCER TYPES ###
 # Match cancer type between input and available synonyms
-synonyms = read.csv("/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline/cancer_types.csv", header = TRUE,sep=",")
+synonyms = read.csv("/media/galadriel/fleming/oncopmnet/oncopmnet_pipeline/report_extra/cancer_types.csv", header = TRUE,sep=",")
 
 if (!exists("cancer") || !any(cancer == synonyms$tcga_cancer)) {
   warning(paste0('Cancer acronym not found. Using unspecified cancer type as input'))

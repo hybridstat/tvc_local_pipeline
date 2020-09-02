@@ -24,11 +24,6 @@ if [[ ! -f "$HOTSPOTS_BED" ]]; then
 	exitWithError "Input Hotspots BED file $HOTSPOTS_BED not found."
 fi
 
-if [ -d "$MOUNT_OUTDIR" ]; then
-    exitWithError "Directory $MOUNT_OUTDIR exists. Sample $PREFIX has already been analyzed under analysis $ANALYSIS_NAME. Please remove $PREFIX subdirectory or choose a different analysis name or BAM sample for this analysis."
-fi
-
-
 mkdir -p "$MOUNT_OUTDIR"
 
 ALIGNED_BAM="$MOUNT_OUTDIR/${PREFIX}_aligned.bam"
