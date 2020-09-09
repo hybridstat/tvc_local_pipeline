@@ -8,7 +8,8 @@ tools/
 datasets/
 tvc_out/
 ref_genome/
-
+scripts/
+params/
 # !*bed/bed_desc.md
 
 # !/hotspots/hotspots_desc.md
